@@ -7,9 +7,9 @@ export default function ItemList() {
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(true);
 
-  // ✅ Skip loading delay during tests
+  // ✅ Safe check for test mode
   useEffect(() => {
-    const isTest = import.meta.env.MODE === 'test';
+    const isTest = typeof import.meta !== 'undefined' && import.meta.env?.MODE === 'test';
 
     if (isTest) {
       setLoading(false);
@@ -98,4 +98,3 @@ export default function ItemList() {
     </div>
   );
 }
-
