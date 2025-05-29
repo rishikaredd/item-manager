@@ -39,17 +39,6 @@ The Item Manager Portal is a React-based CRUD application to manage a list of it
 
 ---
 
-## Folder Structure
-
-src/
-├── components/ # ItemList, ItemForm, ItemDetail, etc.
-├── context/ # Global state using ItemContext
-├── data/ # Static products.json (mock data)
-├── App.jsx # Main routing logic
-├── index.js # Application entry point
-└── styles/ # Tailwind config or custom styles
-
-
 ✅ 1. Setup & Run Instructions
 ## Setup & Run Instructions
 
