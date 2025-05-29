@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import ItemList from './components/ItemList';
+import ItemList from './components/ItemList.jsx';
 import ItemDetail from './components/ItemDetail';
-import ItemForm from './components/ItemForm';
+import ItemForm from './components/ItemForm.jsx';
 
 function App() {
   return (

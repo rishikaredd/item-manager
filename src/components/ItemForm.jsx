@@ -14,6 +14,8 @@ export default function ItemForm() {
     description: '',
   });
 
+  const [errors, setErrors] = useState({}); // ✅ Error state
+
   useEffect(() => {
     if (isEditing) {
       const existingItem = items.find(item => item.id === parseInt(id));
@@ -28,8 +30,22 @@ export default function ItemForm() {
     }));
   };
 
+  // ✅ Validation function
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.title.trim()) newErrors.title = 'Title is required';
+    if (!formData.category.trim()) newErrors.category = 'Category is required';
+    return newErrors;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formErrors = validate();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors); // ✅ Show errors
+      return;
+    }
 
     if (isEditing) {
       const updatedItems = items.map(item =>
@@ -51,6 +67,7 @@ export default function ItemForm() {
     <div className="max-w-xl mx-auto bg-white p-6 rounded shadow">
       <h2 className="text-2xl font-bold mb-4">{isEditing ? 'Edit Item' : 'Add New Item'}</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
+
         <div>
           <label className="block font-medium mb-1">Title</label>
           <input
@@ -58,9 +75,9 @@ export default function ItemForm() {
             name="title"
             value={formData.title}
             onChange={handleChange}
-            required
             className="w-full border rounded px-3 py-2"
           />
+          {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
         </div>
 
         <div>
@@ -70,9 +87,9 @@ export default function ItemForm() {
             name="category"
             value={formData.category}
             onChange={handleChange}
-            required
             className="w-full border rounded px-3 py-2"
           />
+          {errors.category && <p className="text-red-500 text-sm mt-1">{errors.category}</p>}
         </div>
 
         <div>
@@ -96,3 +113,4 @@ export default function ItemForm() {
     </div>
   );
 }
+
