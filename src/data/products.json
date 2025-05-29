@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "title": "MacBook Air",
+    "category": "Electronics",
+    "description": "Apple laptop with M2 chip"
+  },
+  {
+    "id": "2",
+    "title": "Office Chair",
+    "category": "Furniture",
+    "description": "Ergonomic chair for office work"
+  }
+]
